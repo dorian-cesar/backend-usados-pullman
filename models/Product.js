@@ -2,7 +2,7 @@ const { DataTypes } = require("sequelize");
 const sequelize = require("../config/database");
 
 const Product = sequelize.define("Product", {
-  id: { type: DataTypes.INTEGER, primaryKey: true }, // Ej: "LJLG-30"
+  id: { type: DataTypes.INTEGER, primaryKey: true },
   PLATE: { type: DataTypes.STRING }, // Ej: "LJLG-30"
   brand: { type: DataTypes.STRING, allowNull: true },
   model: { type: DataTypes.STRING },
