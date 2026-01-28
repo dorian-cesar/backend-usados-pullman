@@ -48,7 +48,7 @@ const PORT = process.env.PORT || 3000;
 
 // Sincronización con MySQL
 sequelize
-  .sync({ force: true }) // Mantiene las tablas actualizadas según los modelos
+  .sync() // Mantiene las tablas actualizadas según los modelos
   .then(() => {
     console.log("✅ Conexión a MySQL exitosa y modelos sincronizados");
     app.listen(PORT, () => {
