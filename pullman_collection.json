@@ -1,0 +1,112 @@
+{
+	"info": {
+		"name": "Usados Pullman API 2026",
+		"schema": "https://schema.getpostman.com"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login Admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"admin@pullman.com\",\n    \"password\": \"PasswordSeguro2026!\"\n}",
+							"options": { "raw": { "language": "json" } }
+						},
+						"url": { "raw": "{{base_url}}/auth/login" }
+					}
+				}
+			]
+		},
+		{
+			"name": "Categorías",
+			"item": [
+				{
+					"name": "Listar Categorías",
+					"request": {
+						"method": "GET",
+						"url": { "raw": "{{base_url}}/categories" }
+					}
+				},
+				{
+					"name": "Crear Categoría",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Authorization", "value": "Bearer {{token}}" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Buses Interurbanos\"\n}",
+							"options": { "raw": { "language": "json" } }
+						},
+						"url": { "raw": "{{base_url}}/categories" }
+					}
+				}
+			]
+		},
+		{
+			"name": "Productos",
+			"item": [
+				{
+					"name": "Listar Todos",
+					"request": {
+						"method": "GET",
+						"url": { "raw": "{{base_url}}/products" }
+					}
+				},
+				{
+					"name": "Detalle Producto",
+					"request": {
+						"method": "GET",
+						"url": { "raw": "{{base_url}}/products/LJLG-30" }
+					}
+				},
+				{
+					"name": "Crear Producto (Multipart)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Authorization", "value": "Bearer {{token}}" }
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{ "key": "id", "value": "TEST-2026", "type": "text" },
+								{ "key": "brand", "value": "VOLVO", "type": "text" },
+								{ "key": "model", "value": "B12R", "type": "text" },
+								{ "key": "categoryId", "value": "1", "type": "text" },
+								{ "key": "photos", "type": "file", "src": [] }
+							]
+						},
+						"url": { "raw": "{{base_url}}/products" }
+					}
+				},
+				{
+					"name": "Eliminar Producto",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{ "key": "Authorization", "value": "Bearer {{token}}" }
+						],
+						"url": { "raw": "{{base_url}}/products/TEST-2026" }
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": { "type": "text/javascript", "exec": [ "" ] }
+		}
+	],
+	"variable": [
+		{ "key": "base_url", "value": "http://localhost:3000/api" },
+		{ "key": "token", "value": "PEGA_AQUI_TU_TOKEN" }
+	]
+}
