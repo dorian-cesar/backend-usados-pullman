@@ -127,7 +127,6 @@
             </div>
           </div>
 
-          <!-- COLUMNA CENTRAL: FORMULARIO VEHÍCULO -->
           <div class="col-lg-4">
             <div class="card mb-4 sticky-form">
               <div
@@ -152,17 +151,17 @@
                   <div class="section-title">Datos Comerciales</div>
                   <div class="row g-2 mb-3">
                     <div class="col-md-6">
-                      <label class="form-label">Patente (PLATE)</label
-                      ><input
+                      <label class="form-label">Patente (plate)</label>
+                      <input
                         type="text"
-                        id="p-PLATE"
+                        id="p-plate"
                         class="form-control"
                         required
                       />
                     </div>
                     <div class="col-md-6">
-                      <label class="form-label">Precio ($)</label
-                      ><input
+                      <label class="form-label">Precio ($)</label>
+                      <input
                         type="text"
                         id="p-price"
                         class="form-control"
@@ -170,36 +169,88 @@
                       />
                     </div>
                     <div class="col-md-6">
-                      <label class="form-label">Marca</label
-                      ><input type="text" id="p-brand" class="form-control" />
+                      <label class="form-label">Estado</label>
+                      <select id="p-estado" class="form-select">
+                        <option value="disponible">✅ Disponible</option>
+                        <option value="reservado">⏳ Reservado</option>
+                        <option value="vendido">🚫 Vendido</option>
+                      </select>
+                    </div>
+                    <div class="col-md-6 d-flex align-items-end px-3">
+                      <div class="form-check mb-2">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          id="p-destacado"
+                        />
+                        <label
+                          class="form-check-label fw-bold"
+                          for="p-destacado"
+                          >⭐ Destacado</label
+                        >
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="section-title">Especificaciones</div>
+                  <div class="row g-2 mb-3">
+                    <div class="col-md-6">
+                      <label class="form-label">Marca</label>
+                      <input type="text" id="p-brand" class="form-control" />
                     </div>
                     <div class="col-md-6">
-                      <label class="form-label">Modelo</label
-                      ><input type="text" id="p-model" class="form-control" />
+                      <label class="form-label">Modelo</label>
+                      <input type="text" id="p-model" class="form-control" />
+                    </div>
+                    <div class="col-md-4">
+                      <label class="form-label">Año</label>
+                      <input type="number" id="p-year" class="form-control" />
+                    </div>
+                    <div class="col-md-4">
+                      <label class="form-label">KM</label>
+                      <input type="text" id="p-mileage" class="form-control" />
+                    </div>
+                    <div class="col-md-4">
+                      <label class="form-label">Categoría</label>
+                      <select id="p-category" class="form-select"></select>
                     </div>
                   </div>
 
                   <div class="section-title">Ficha Técnica</div>
                   <div class="row g-2 mb-3">
-                    <div class="col-md-4">
-                      <label class="form-label">Año</label
-                      ><input type="number" id="p-year" class="form-control" />
+                    <div class="col-md-6">
+                      <label class="form-label">Motor</label>
+                      <input type="text" id="p-motor" class="form-control" />
                     </div>
-                    <div class="col-md-4">
-                      <label class="form-label">KM</label
-                      ><input type="text" id="p-mileage" class="form-control" />
+                    <div class="col-md-6">
+                      <label class="form-label">Chasis</label>
+                      <input type="text" id="p-chassis" class="form-control" />
                     </div>
-                    <div class="col-md-4">
-                      <label class="form-label">Categoría</label
-                      ><select id="p-category" class="form-select"></select>
+                    <div class="col-md-6">
+                      <label class="form-label">Transmisión</label>
+                      <input
+                        type="text"
+                        id="p-transmission"
+                        class="form-control"
+                      />
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">Carrocería</label>
+                      <input type="text" id="p-bodywork" class="form-control" />
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">Ubicación</label>
+                      <input type="text" id="p-location" class="form-control" />
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">Propiedad</label>
+                      <input type="text" id="p-property" class="form-control" />
                     </div>
                   </div>
 
-                  <div class="section-title">Multimedia</div>
+                  <div class="section-title">Multimedia y Descripción</div>
                   <div class="mb-3">
-                    <label class="form-label"
-                      >Fotos (Sustituyen a las actuales si subes nuevas)</label
-                    >
+                    <label class="form-label">Fotos (Múltiples archivos)</label>
                     <input
                       type="file"
                       id="p-files"
@@ -207,6 +258,14 @@
                       accept="image/*"
                       multiple
                     />
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Descripción</label>
+                    <textarea
+                      id="p-description"
+                      class="form-control"
+                      rows="3"
+                    ></textarea>
                   </div>
 
                   <button
@@ -318,7 +377,7 @@
             const count = p.images ? p.images.length : 0;
             table.innerHTML += `
                         <tr>
-                            <td><strong>${p.PLATE || "S/P"}</strong></td>
+                            <td><strong>${p.plate || "S/P"}</strong></td>
                             <td>${p.brand} ${p.model}</td>
                             <td><span class="badge bg-dark">${count} fotos</span></td>
                             <td class="text-end">
@@ -419,24 +478,38 @@
       }
 
       // --- PRODUCTOS CRUD ---
+
       async function editProduct(id) {
         const res = await fetch(`${API_URL}/products/${id}`);
         const p = await res.json();
+
         document.getElementById("p-id").value = p.id;
-        document.getElementById("p-PLATE").value = p.PLATE;
-        document.getElementById("p-brand").value = p.brand;
-        document.getElementById("p-model").value = p.model;
-        document.getElementById("p-price").value = p.price;
-        document.getElementById("p-year").value = p.year;
-        document.getElementById("p-mileage").value = p.mileage;
-        document.getElementById("p-category").value = p.categoryId;
+        document.getElementById("p-plate").value = p.plate || "";
+        document.getElementById("p-brand").value = p.brand || "";
+        document.getElementById("p-model").value = p.model || "";
+        document.getElementById("p-price").value = p.price || "";
+        document.getElementById("p-year").value = p.year || "";
+        document.getElementById("p-mileage").value = p.mileage || "";
+        document.getElementById("p-category").value = p.categoryId || "";
+
+        document.getElementById("p-estado").value = p.estado || "disponible";
+        document.getElementById("p-destacado").checked = !!p.destacado;
+
+        document.getElementById("p-motor").value = p.motor || "";
+        document.getElementById("p-chassis").value = p.chassis || "";
+        document.getElementById("p-transmission").value = p.transmission || "";
+        document.getElementById("p-bodywork").value = p.bodywork || "";
+        document.getElementById("p-location").value = p.location || "";
+        document.getElementById("p-property").value = p.property || "";
+        document.getElementById("p-description").value = p.description || "";
 
         editingId = id;
         document.getElementById("is-editing").value = "true";
         document.getElementById("form-title").innerText =
-          "💾 Editando ID: " + id;
+          `💾 Editando ID: ${id}`;
         document.getElementById("btn-submit").innerText = "Guardar Cambios";
         document.getElementById("btn-cancel-edit").classList.remove("hidden");
+
         window.scrollTo({ top: 0, behavior: "smooth" });
       }
 
@@ -458,10 +531,10 @@
             document.getElementById("is-editing").value === "true";
           const formData = new FormData();
 
-          formData.append("PLATE", document.getElementById("p-PLATE").value);
+          formData.append("plate", document.getElementById("p-plate").value);
+          formData.append("price", document.getElementById("p-price").value);
           formData.append("brand", document.getElementById("p-brand").value);
           formData.append("model", document.getElementById("p-model").value);
-          formData.append("price", document.getElementById("p-price").value);
           formData.append("year", document.getElementById("p-year").value);
           formData.append(
             "mileage",
@@ -471,14 +544,42 @@
             "categoryId",
             document.getElementById("p-category").value,
           );
+
+          formData.append("estado", document.getElementById("p-estado").value);
           formData.append(
-            "publishedDate",
-            new Date().toLocaleDateString("es-CL"),
+            "destacado",
+            document.getElementById("p-destacado").checked ? 1 : 0,
+          );
+
+          formData.append("motor", document.getElementById("p-motor").value);
+          formData.append(
+            "chassis",
+            document.getElementById("p-chassis").value,
+          );
+          formData.append(
+            "transmission",
+            document.getElementById("p-transmission").value,
+          );
+          formData.append(
+            "bodywork",
+            document.getElementById("p-bodywork").value,
+          );
+          formData.append(
+            "location",
+            document.getElementById("p-location").value,
+          );
+          formData.append(
+            "property",
+            document.getElementById("p-property").value,
+          );
+          formData.append(
+            "description",
+            document.getElementById("p-description").value,
           );
 
           const fileInput = document.getElementById("p-files");
-          for (let f of fileInput.files) {
-            formData.append("photos", f);
+          for (let file of fileInput.files) {
+            formData.append("photos", file);
           }
 
           const url = isEditing
