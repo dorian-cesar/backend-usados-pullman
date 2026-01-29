@@ -13,7 +13,7 @@ router.get("/", async (req, res) => {
         {
           model: Product,
           as: "products",
-          attributes: ["id", "brand", "model"], // Traemos solo lo básico para no sobrecargar
+          attributes: ["id", "brand", "model", "plate", "price", "estado"], // Traemos solo lo básico para no sobrecargar
         },
       ],
     });
