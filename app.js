@@ -13,6 +13,7 @@ const User = require("./models/User");
 const authRoutes = require("./routes/authRoutes");
 const productRoutes = require("./routes/productRoutes");
 const categoryRoutes = require("./routes/categoryRoutes");
+const emailRouter = require("./routes/emailRouter"); // El nuevo router
 
 const app = express();
 
@@ -42,6 +43,7 @@ Product.belongsTo(Category, { foreignKey: "categoryId", as: "category" });
 app.use("/api/auth", authRoutes);
 app.use("/api/categories", categoryRoutes);
 app.use("/api/products", productRoutes);
+app.use("/api/email", emailRouter);
 
 // --- 5. Sincronización y Arranque ---
 const PORT = process.env.PORT || 3000;

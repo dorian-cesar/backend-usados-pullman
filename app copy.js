@@ -7,6 +7,7 @@ const Category = require("./models/Category");
 // Importar rutas
 const productRoutes = require("./routes/productRoutes");
 const categoryRoutes = require("./routes/categoryRoutes");
+const emailRouter = require("./routes/emailRouter");
 
 const app = express();
 app.use(cors());
@@ -19,6 +20,7 @@ Product.belongsTo(Category, { foreignKey: "categoryId", as: "category" });
 // Endpoints
 app.use("/api/products", productRoutes);
 app.use("/api/categories", categoryRoutes);
+app.use("/api/email", emailRouter); // Endpoint: http://localhost:PORT/api/email/send
 
 const PORT = 3000;
 sequelize.sync({ alter: true }).then(() => {
